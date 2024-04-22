@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "mcv-open-api"
+version = "0.1.0"
+description = ""
+authors = ["HRNPH <hrnph@protonmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+litestar = "^2.8.2"
+uvicorn = "^0.29.0"
+gunicorn = "^22.0.0"
+mcv-api-python-unofficial = "^0.1.0"
+pydantic = "^2.7.0"
+loguru = "^0.7.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
