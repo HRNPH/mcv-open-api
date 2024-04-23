@@ -53,4 +53,4 @@ RUN adduser --system --uid 1001 "app-user"
 USER "app-user"
 
 ENTRYPOINT ["/bin/sh", "-c"]
-CMD ["uvicorn app.main:app"]
+CMD gunicorn -w 1 -k uvicorn.workers.UvicornWorker --bind [::]:$PORT app.main:app --timeout 120
