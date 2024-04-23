@@ -53,6 +53,10 @@ RUN adduser --system --uid 1001 "app-user"
 USER "app-user"
 
 ENTRYPOINT ["/bin/sh", "-c"]
+# default port is 8000 but can be overridden
+ENV PORT=8000
+# log current port
+RUN echo "Running on port $PORT"
 # request to /
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 CMD curl --fail http://localhost:$PORT/ || exit 1
 CMD gunicorn -w 1 -k uvicorn.workers.UvicornWorker --bind [::]:$PORT app.main:app --timeout 120
