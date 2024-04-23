@@ -58,5 +58,5 @@ ENV PORT=8000
 # log current port
 RUN echo "Running on port $PORT"
 # request to /
-HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 CMD curl --fail http://localhost:$PORT/ || exit 1
-CMD gunicorn -w 1 -k uvicorn.workers.UvicornWorker --bind [::]:$PORT app.main:app --timeout 120
+CMD ["gunicorn -w 1 -k uvicorn.workers.UvicornWorker --bind [::]:$PORT app.main:app --timeout 120"]
+HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 CMD curl --fail http://0.0.0.0:$PORT/ || exit 1
